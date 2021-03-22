@@ -161,8 +161,10 @@ public class SkinStorage {
         try {
             textures = this.getMojangAPI().getSkinProperty(this.getMojangAPI().getUUID(skin, true));
 
-            if (textures == null)
-                throw new SkinRequestException(Locale.ERROR_NO_SKIN);
+            if (textures == null) {
+                if (!silent)
+                    throw new SkinRequestException(Locale.ERROR_NO_SKIN);
+            }
 
             setSkinData(skin, textures);
         } catch (SkinRequestException e) {

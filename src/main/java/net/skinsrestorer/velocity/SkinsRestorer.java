@@ -102,6 +102,7 @@ public class SkinsRestorer implements SRPlugin {
         File UPDATER_DISABLED = new File(CONFIG_PATH, "noupdate.txt");
 
         // Check for updates
+        /*
         if (!UPDATER_DISABLED.exists()) {
             this.updateChecker = new UpdateCheckerGitHub(2124, this.getVersion(), this.getLogger(), "SkinsRestorerUpdater/Velocity");
             this.checkUpdate(true);
@@ -110,6 +111,7 @@ public class SkinsRestorer implements SRPlugin {
         } else {
             logger.logAlways(Level.INFO, "Updater Disabled");
         }
+         */
 
         this.skinStorage = new SkinStorage(SkinStorage.Platform.VELOCITY);
 
@@ -207,6 +209,7 @@ public class SkinsRestorer implements SRPlugin {
 
                 this.skinStorage.setMysql(mysql);
             } catch (Exception e) {
+                e.printStackTrace();
                 logger.logAlways("§cCan't connect to MySQL! Disabling SkinsRestorer.");
                 return false;
             }
